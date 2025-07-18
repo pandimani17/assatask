@@ -7,6 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.assaabloy.task.presentation.lockconfig.edit.ui.LockConfigEditRoute
+import com.assaabloy.task.presentation.lockconfig.edit.ui.LockConfigEditScreen
 import com.assaabloy.task.presentation.lockconfig.list.ui.LockConfigListRoute
 import com.assaabloy.task.presentation.lockconfig.list.ui.LockConfigListScreen
 
@@ -34,12 +36,9 @@ fun LockConfigNavGraph(navController: NavHostController) {
             navArgument("paramKey") { type = NavType.StringType })) { backStackEntry ->
             val paramKey = backStackEntry.arguments!!.getString("paramKey")!!
 
-//            LockConfigEditScreen(
-//                paramKey = paramKey,
-//                onBack = { navController.popBackStack() },
-//                onSave = { primaryValue, secondaryValue ->
-//                    navController.popBackStack()
-//                })
+            LockConfigEditRoute(
+                paramKey = paramKey,
+                onBack = { navController.popBackStack() })
         }
     }
 }

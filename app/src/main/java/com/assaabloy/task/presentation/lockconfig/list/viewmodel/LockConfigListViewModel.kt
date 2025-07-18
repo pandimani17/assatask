@@ -58,8 +58,8 @@ class LockConfigListViewModel @Inject constructor(
             initialValue = LockConfigListState()
         )
 
-    fun onSearchQueryChange(q: String) {
-        _searchQuery.value = q
+    fun onSearchQueryChange(filterQuery: String) {
+        _searchQuery.value = filterQuery
     }
 
     fun onLeafSelected(leaf: DoorLeaf) {
