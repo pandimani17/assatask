@@ -22,7 +22,7 @@ A demo Android application that lets a service technician configure lock paramet
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 We follow **Clean Architecture** & **MVVM**, split into three layers
 
@@ -39,7 +39,7 @@ We follow **Clean Architecture** & **MVVM**, split into three layers
 
 ---
 
-## 🌿 Branches
+##  Branches
 
 - **`main`**  
   – Loads the lock-configuration JSON from **`app/src/main/assets/lock_config.json`**  
@@ -54,7 +54,7 @@ We follow **Clean Architecture** & **MVVM**, split into three layers
 
 ---
 
-## ⚙️ Getting Started
+##  Getting Started
 
 **Prerequisites:**
 - Android Studio Flamingo or later
