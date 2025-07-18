@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import com.assaabloy.task.domain.lockconfig.model.ChoiceParams
 import com.assaabloy.task.domain.lockconfig.model.ParamDefinition
 import com.assaabloy.task.domain.lockconfig.model.RangeParams
+import kotlin.math.roundToInt
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -170,13 +171,17 @@ private fun RangeEditor(
     Column {
         Slider(
             value = value,
-            onValueChange = onValueChange,
+            onValueChange = { newValue ->
+                val intVal = newValue.roundToInt().coerceIn(min.roundToInt(), max.roundToInt())
+                onValueChange(intVal.toFloat())
+            },
             valueRange = min..max,
+            steps = (max.roundToInt() - min.roundToInt()) - 1,
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = "${value}${unit}",
+            text = "${value.roundToInt()}${unit}",
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center

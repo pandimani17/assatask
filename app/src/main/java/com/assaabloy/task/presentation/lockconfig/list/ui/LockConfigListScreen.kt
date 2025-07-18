@@ -22,9 +22,15 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.TextRange
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.assaabloy.task.domain.lockconfig.model.ChoiceParams
@@ -75,9 +81,20 @@ private fun SearchBar(
     query: String, onQueryChange: (String) -> Unit, modifier: Modifier = Modifier
 ) {
     val focus = LocalFocusManager.current
+    var textState by remember {
+        mutableStateOf(
+            TextFieldValue(
+                text = query,
+                selection = TextRange(query.length)
+            )
+        )
+    }
     TextField(
-        value = query,
-        onValueChange = onQueryChange,
+        value = textState,
+        onValueChange = { newValue ->
+            textState = newValue
+            onQueryChange(newValue.text)
+        },
         modifier = modifier,
         placeholder = { Text("Search parameters") },
         singleLine = true,

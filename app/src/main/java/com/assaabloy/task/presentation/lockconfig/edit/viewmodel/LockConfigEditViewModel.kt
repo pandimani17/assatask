@@ -63,12 +63,12 @@ class LockConfigEditViewModel @Inject constructor(
         }
     }
 
-    fun onPrimaryChange(v: String) {
-        _state.value = _state.value.copy(primaryValue = v)
+    fun onPrimaryChange(value: String) {
+        _state.value = _state.value.copy(primaryValue = value)
     }
 
-    fun onSecondaryChange(v: String) {
-        _state.value = _state.value.copy(secondaryValue = v)
+    fun onSecondaryChange(value: String) {
+        _state.value = _state.value.copy(secondaryValue = value)
     }
 
     fun onSave(onDone: () -> Unit) {
