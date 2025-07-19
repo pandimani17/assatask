@@ -15,9 +15,6 @@ interface ParamValueDao {
     @Query("SELECT * FROM ParamValueEntity WHERE leaf = :leaf")
     fun valuesForLeaf(leaf: String): Flow<List<ParamValueEntity>>
 
-//    @Query(" SELECT * FROM ParamValueEntity WHERE leaf = :leaf AND (key LIKE '%' || :query || '%' OR value LIKE '%' || :query || '%')")
-//    fun filterValues(leaf: String, query: String): Flow<List<ParamValueEntity>>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(entity: ParamValueEntity)
 }

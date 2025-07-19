@@ -171,17 +171,17 @@ private fun RangeEditor(
     Column {
         Slider(
             value = value,
-            onValueChange = { newValue ->
-                val intVal = newValue.roundToInt().coerceIn(min.roundToInt(), max.roundToInt())
-                onValueChange(intVal.toFloat())
+            onValueChange = { decimal ->
+                val rounded = (decimal * 10f).roundToInt() / 10f
+                val clamped = rounded.coerceIn(min, max)
+                onValueChange(clamped)
             },
             valueRange = min..max,
-            steps = (max.roundToInt() - min.roundToInt()) - 1,
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = "${value.roundToInt()}${unit}",
+            text = String.format("%.1f %s", value, unit),
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center
@@ -191,7 +191,7 @@ private fun RangeEditor(
 
 @Preview(showBackground = true)
 @Composable
-private fun PreviewEditDiscrete() {
+private fun PreviewEditChoice() {
     LockConfigEditScreen(
         definition = ChoiceParams(
             key = "lockType",

@@ -35,11 +35,9 @@ class LockConfigEditViewModel @Inject constructor(
     private fun load() {
         viewModelScope.launch {
             try {
-                // 1) find the definition for this key
                 val defs = getDefs().first()
                 val def = defs.first { it.key == paramKey }
 
-                // 2) load saved values or defaults for both leaves
                 val primVals = getVals(DoorLeaf.PRIMARY).first()
                 val secVals  = getVals(DoorLeaf.SECONDARY).first()
 
@@ -74,7 +72,6 @@ class LockConfigEditViewModel @Inject constructor(
     fun onSave(onDone: () -> Unit) {
         val def = _state.value.definition ?: return
         viewModelScope.launch {
-            // persist both leaves
             save(ParamValue(def.key, DoorLeaf.PRIMARY,   _state.value.primaryValue))
             save(ParamValue(def.key, DoorLeaf.SECONDARY, _state.value.secondaryValue))
             onDone()

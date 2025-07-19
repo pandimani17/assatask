@@ -1,4 +1,4 @@
-package com.assaabloy.task.ui.theme
+package com.assaabloy.task.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
