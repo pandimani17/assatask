@@ -60,6 +60,13 @@ We follow **Clean Architecture** & **MVVM**, split into three layers
 - Android Studio Flamingo or later
 - Kotlin 1.9.0+, Android Gradle Plugin 8.1+
 - minSdk 29, targetSdk 36
+## App Screenshots
+
+![Lock Config List Screen](screenshots/list_screen.png)  
+*Primary/Secondary list with search*
+
+![Lock Config Edit Screen](screenshots/edit_screen.png)  
+*Edit Voltage and Angle parameters*
 
 **Clone & run:**
 git clone https://github.com/pandimani17/assatask.git
